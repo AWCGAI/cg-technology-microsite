@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology — Collaborate Global</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font: 'General Sans', -apple-system, Arial, sans-serif;
+      --black: #000000;
+      --white: #ffffff;
+      --light: #eeeeee;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 48px;
+      background: var(--black);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 28px; width: auto; display: block; }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; z-index: 200; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); transition: transform 0.25s, opacity 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .nav-menu {
+      position: fixed; inset: 0; z-index: 150;
+      background: var(--black);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .nav-menu.open { opacity: 1; pointer-events: all; }
+    .nav-menu a {
+      display: block;
+      font-size: clamp(36px, 5vw, 72px); font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1;
+      color: var(--white); text-decoration: none;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: opacity 0.2s;
+    }
+    .nav-menu a:hover { opacity: 0.5; }
+    .nav-menu-footer {
+      margin-top: 48px;
+      font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: flex-end;
+      padding: 140px 80px 100px;
+      background: url('https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbe07e4542358363c38977_TA307376%202.jpg') center / cover no-repeat;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 960px; }
+    .hero-eyebrow {
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65); margin-bottom: 28px;
+    }
+    .hero-headline {
+      font-size: clamp(52px, 7.5vw, 108px); font-weight: 400; line-height: 0.96;
+      text-transform: uppercase; letter-spacing: 0.015em; color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: clamp(22px, 3vw, 38px); font-weight: 400; line-height: 1.1;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.65); margin-bottom: 40px;
+    }
+    .hero-tagline {
+      font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.8);
+      max-width: 480px; border-left: 2px solid rgba(255,255,255,0.3); padding-left: 20px;
+    }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy { background: var(--white); padding: 120px 80px; }
+    .philosophy-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .philosophy-statement {
+      font-size: clamp(32px, 4vw, 54px); font-weight: 400; line-height: 1.05;
+      text-transform: uppercase; letter-spacing: 0.02em;
+    }
+    .philosophy-body { font-size: 18px; line-height: 1.75; color: #333; padding-top: 6px; }
+    .philosophy-body p + p { margin-top: 20px; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--black); color: var(--white); padding: 100px 80px; }
+    .section-eyebrow {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      opacity: 0.5; margin-bottom: 64px;
+    }
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .service-item { padding: 40px 32px 40px 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .service-num { font-size: 11px; letter-spacing: 0.15em; opacity: 0.35; margin-bottom: 48px; }
+    .service-title {
+      font-size: 18px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.05em;
+      line-height: 1.3; margin-bottom: 16px;
+    }
+    .service-desc { font-size: 14px; line-height: 1.65; opacity: 0.6; }
+
+    /* ── WORK ── */
+    .work { background: var(--light); padding: 100px 80px; }
+    .work-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      max-width: 1200px; margin: 0 auto 64px;
+    }
+    .work-title {
+      font-size: clamp(28px, 3.5vw, 48px); font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .case-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .case-card { background: var(--white); display: flex; flex-direction: column; }
+    .case-img { height: 260px; overflow: hidden; position: relative; }
+    .case-img img { width: 100%; height: 100%; object-fit: cover; }
+    .case-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    .case-body { padding: 32px 28px 36px; flex: 1; display: flex; flex-direction: column; }
+    .case-client { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.45; margin-bottom: 10px; }
+    .case-title {
+      font-size: 21px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 24px;
+    }
+    .case-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 12px; margin-bottom: 24px; }
+    .stat-num { font-size: 30px; font-weight: 400; line-height: 1; margin-bottom: 4px; }
+    .stat-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.45; }
+    .case-desc { font-size: 13.5px; line-height: 1.65; color: #555; margin-top: auto; }
+
+    /* ── THOUGHT PIECE ── */
+    .tp-header {
+      display: grid; grid-template-columns: 5fr 7fr; min-height: 640px;
+    }
+    .tp-left {
+      padding: 72px 60px;
+      background: url('https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbde3b9fa0030720b7d7ce_TA307206.jpg') center / cover no-repeat;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .tp-back { font-size: 13px; color: rgba(255,255,255,0.75); text-decoration: none; }
+    .tp-content {}
+    .tp-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 14px; }
+    .tp-title {
+      font-size: clamp(26px, 3vw, 42px); font-weight: 400; line-height: 1.1;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .tp-byline { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 32px; line-height: 1.4; }
+    .tp-cta {
+      font-size: 13px; color: var(--white); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.35);
+    }
+    .tp-right { overflow: hidden; }
+    .tp-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+    .tp-body-wrap { background: var(--white); display: flex; justify-content: center; padding: 80px 40px; }
+    .tp-body { max-width: 720px; width: 100%; }
+    .article-text { font-size: 18px; line-height: 1.8; color: #222; }
+    .article-text p { margin-bottom: 26px; }
+    .article-text p:first-child { font-size: 20px; font-weight: 500; line-height: 1.6; }
+    .article-img { margin: 40px 0; width: 100%; height: 380px; overflow: hidden; }
+    .article-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── PROCESS ── */
+    .process { background: var(--black); color: var(--white); padding: 100px 80px; }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-hdr { margin-bottom: 80px; }
+    .process-headline {
+      font-size: clamp(28px, 3.5vw, 48px); font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .process-item { padding: 40px 32px 40px 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .process-step { font-size: 11px; letter-spacing: 0.15em; opacity: 0.3; margin-bottom: 20px; }
+    .process-name {
+      font-size: 26px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 20px; line-height: 1;
+    }
+    .process-desc { font-size: 14px; line-height: 1.65; opacity: 0.65; }
+
+    /* ── CTA ── */
+    .cta { background: var(--black); color: var(--white); padding: 160px 80px; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); }
+    .cta-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.45; margin-bottom: 36px; }
+    .cta-headline {
+      font-size: clamp(42px, 6.5vw, 96px); font-weight: 400; line-height: 0.96;
+      text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 28px;
+    }
+    .cta-sub { font-size: 20px; opacity: 0.6; margin-bottom: 52px; font-style: italic; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.35); padding: 18px 44px;
+      transition: background 0.2s, color 0.2s;
+      font-family: var(--font);
+    }
+    .cta-btn:hover { background: var(--white); color: var(--black); }
+
+    /* ── FULL-BLEED IMAGE BREAK ── */
+    .fullbleed {
+      position: relative; width: 100%; height: 85vh; min-height: 500px;
+      overflow: hidden;
+    }
+    .fullbleed img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .fullbleed-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 60px 80px 52px;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+      color: rgba(255,255,255,0.7);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); color: var(--white); padding: 64px 80px 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+      max-width: 1200px; margin: 0 auto 56px;
+    }
+    .footer-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.4; margin-bottom: 10px; }
+    .footer-val { font-size: 16px; }
+    .footer-val a { color: var(--white); text-decoration: none; }
+    .footer-val a:hover { text-decoration: underline; }
+    .footer-bottom {
+      display: flex; justify-content: space-between;
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 11px; opacity: 0.35; letter-spacing: 0.05em;
+    }
+
+    /* ── BRAND LOGOS ── */
+    .brands { background: var(--white); padding: 80px; border-top: 1px solid var(--light); }
+    .brands-inner { max-width: 1200px; margin: 0 auto; }
+    .brands-lbl { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.4; text-align: center; margin-bottom: 48px; }
+    .brands-list {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 48px 64px;
+    }
+    .brand-name {
+      font-size: 15px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.35;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://www.collaborateglobal.com" class="nav-logo">
+      <img src="logos/logo_white.png" alt="Collaborate Global">
+    </a>
+    <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-menu" id="nav-menu" aria-hidden="true">
+    <a href="https://www.collaborateglobal.com/work">Work</a>
+    <a href="https://www.collaborateglobal.com/services">Services</a>
+    <a href="https://www.collaborateglobal.com/about">About</a>
+    <a href="https://www.collaborateglobal.com/news">News</a>
+    <a href="https://www.collaborateglobal.com/contact">Contact</a>
+    <p class="nav-menu-footer">Technology — Collaborate Global</p>
+  </div>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Technology — Collaborate Global</p>
+      <h1 class="hero-headline">Great Technology<br>Deserves<br>To Be Felt.</h1>
+      <p class="hero-sub">Not Just Seen or Understood.</p>
+      <p class="hero-tagline">Transformation happens through experience, not explanation.</p>
+    </div>
+  </section>
+
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="philosophy-inner">
+      <div class="philosophy-statement">We Are<br>Shaped By<br>What We<br>Feel.</div>
+      <div class="philosophy-body">
+        <p>Your innovation changes how people live, work and connect. But breakthrough technology feels distant through screens and presentations alone.</p>
+        <p>We design brand experiences that transform observers into believers. We build worlds people want to step into, where technology becomes something they feel in the real world.</p>
+        <p>When customers experience innovation through all their senses, digital promises become something people believe in.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FULL-BLEED: KDDI Tokyo city environment, MWC 2026 -->
+  <div class="fullbleed">
+    <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbe07e4542358363c38977_TA307376%202.jpg" alt="KDDI World — connected city environment at Mobile World Congress">
+    <div class="fullbleed-caption">KDDI World &mdash; Mobile World Congress, Barcelona 2026</div>
+  </div>
+
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="services-inner">
+      <p class="section-eyebrow">What we do for technology brands</p>
+      <div class="services-grid">
+        <div class="service-item">
+          <p class="service-num">01</p>
+          <h3 class="service-title">Exhibition &amp; Conferences</h3>
+          <p class="service-desc">Immersive spaces that make your technology story tangible. Moments that turn announcements into movements. Standout presence that cuts through industry noise.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-num">02</p>
+          <h3 class="service-title">Brand Environments</h3>
+          <p class="service-desc">Permanent and semi-permanent spaces where your innovation lives and breathes. Worlds designed to move people from curious observer to committed believer.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-num">03</p>
+          <h3 class="service-title">Hybrid &amp; Virtual Experiences</h3>
+          <p class="service-desc">Digital innovation made physical, physical innovation made scalable. Bridging both worlds to maximise reach without sacrificing depth of engagement.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-num">04</p>
+          <h3 class="service-title">Product Launches &amp; Live Events</h3>
+          <p class="service-desc">High-impact moments engineered to create lasting emotional connection between your product and your audience. From global reveals to intimate industry briefings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TRUSTED BRANDS -->
+  <section class="brands">
+    <div class="brands-inner">
+      <p class="brands-lbl">Trusted by brands building the future</p>
+      <div class="brands-list">
+        <span class="brand-name">KDDI</span>
+        <span class="brand-name">Hyundai N</span>
+        <span class="brand-name">eBay</span>
+        <span class="brand-name">Huawei</span>
+        <span class="brand-name">MBZUAI</span>
+        <span class="brand-name">Randox</span>
+        <span class="brand-name">Aston Martin</span>
+        <span class="brand-name">Nike</span>
+        <span class="brand-name">Octopus Energy</span>
+        <span class="brand-name">Louis Vuitton</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WORK -->
+  <section class="work">
+    <div class="work-header">
+      <h2 class="work-title">Work</h2>
+      <p class="section-eyebrow" style="margin:0">Selected technology projects</p>
+    </div>
+    <div class="case-grid">
+
+      <!-- KDDI -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbdeac74a1e2762b7aa96d_TA307270.jpg" alt="KDDI at Mobile World Congress — exterior stand view">
+        </div>
+        <div class="case-body">
+          <p class="case-client">KDDI</p>
+          <h3 class="case-title">Mobile World<br>Congress</h3>
+          <div class="case-stats">
+            <div><div class="stat-num">12,000+</div><div class="stat-lbl">Total Visitors</div></div>
+            <div><div class="stat-num">48%</div><div class="stat-lbl">Engagement Rate</div></div>
+            <div><div class="stat-num">13+</div><div class="stat-lbl">Min Avg Dwell</div></div>
+          </div>
+          <p class="case-desc">Three consecutive years at MWC, evolving KDDI's story from human moments, to intelligent systems, to a fully connected Tokyo. By making the complex feel intuitive, visitors left understanding not just what KDDI does — but why it matters.</p>
+        </div>
+      </div>
+
+      <!-- KDDI 2 — interior -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbe185233b8adee5bc6f91_TA307060.jpg" alt="KDDI — Life Transformation globe installation at MWC">
+        </div>
+        <div class="case-body">
+          <p class="case-client">KDDI</p>
+          <h3 class="case-title">Life Transformation:<br>Globe Installation</h3>
+          <div class="case-stats">
+            <div><div class="stat-num">3</div><div class="stat-lbl">Consecutive Years</div></div>
+            <div><div class="stat-num">Tokyo</div><div class="stat-lbl">Connected City Concept</div></div>
+          </div>
+          <p class="case-desc">In 2026, the experience evolved into a connected city inspired by Tokyo. Visitors moved through streets, retail spaces and everyday interactions where KDDI's technology wasn't demonstrated — it was lived.</p>
+        </div>
+      </div>
+
+      <!-- Hyundai -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69a07ccf7fefec5689a1e6df_FoS%2B25%2B-%2BSmall-4000.webp" alt="Hyundai IONIQ 6N at Goodwood Festival of Speed">
+        </div>
+        <div class="case-body">
+          <p class="case-client">Hyundai N</p>
+          <h3 class="case-title">IONIQ 6N Global<br>Launch</h3>
+          <div class="case-stats">
+            <div><div class="stat-num">102k</div><div class="stat-lbl">Total Visitors</div></div>
+            <div><div class="stat-num">57,869</div><div class="stat-lbl">Engaged Fans</div></div>
+            <div><div class="stat-num">15 Min</div><div class="stat-lbl">Avg Dwell Time</div></div>
+            <div><div class="stat-num">£15k+</div><div class="stat-lbl">Merch Sales</div></div>
+          </div>
+          <p class="case-desc">A layered environment blending immersive digital storytelling, interactive racing simulators and exclusive Goodwood grandstand access. Rather than launching a car, Hyundai created an environment people could step into.</p>
+        </div>
+      </div>
+
+      <!-- eBay -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69b091acc1e7c6087ba5114a_FoS%2025%20-%20Small-1134.jpeg" alt="eBay Garage at Goodwood Festival of Speed">
+        </div>
+        <div class="case-body">
+          <p class="case-client">eBay</p>
+          <h3 class="case-title">The eBay<br>Garage</h3>
+          <div class="case-stats">
+            <div><div class="stat-num">45,000</div><div class="stat-lbl">Engaged Fans</div></div>
+            <div><div class="stat-num">15 Min</div><div class="stat-lbl">Avg Dwell Time</div></div>
+          </div>
+          <p class="case-desc">A multi-level experiential destination at the British Grand Prix and Goodwood Festival of Speed. High-energy physical challenges, multiplayer experiences, digital-first content zones and creator talent made the digital platform physical.</p>
+        </div>
+      </div>
+
+      <!-- MBZUAI -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69b324bd10117f821074dc52_INHAUS.AE_FHC_02.03.2026%20AI%20UNI%20EVENT-274.jpg" alt="MBZUAI Five Years Forward — campus festival">
+        </div>
+        <div class="case-body">
+          <p class="case-client">MBZUAI</p>
+          <h3 class="case-title">Five Years<br>Forward</h3>
+          <div class="case-stats">
+            <div><div class="stat-num">12,000+</div><div class="stat-lbl">Total Visitors</div></div>
+            <div><div class="stat-num">25%</div><div class="stat-lbl">Visitor Conversion</div></div>
+            <div><div class="stat-num">34%</div><div class="stat-lbl">Engagement Rate</div></div>
+          </div>
+          <p class="case-desc">Four days, seven venues. A university campus transformed into a living festival of AI innovation — innovation stages, storytelling totems and community spaces. Making technology feel human in an increasingly digital world.</p>
+        </div>
+      </div>
+
+      <!-- Randox -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69b06b51f46335b4fc7467b5_FoS_2023_CG_TL_234.jpeg" alt="Randox Future Lab at Goodwood Festival of Speed">
+        </div>
+        <div class="case-body">
+          <p class="case-client">Randox Health</p>
+          <h3 class="case-title">Festival of<br>Speed</h3>
+          <div class="case-stats">
+            <div><div class="stat-num">75,000</div><div class="stat-lbl">Total Visitors</div></div>
+            <div><div class="stat-num">30%</div><div class="stat-lbl">Conversion Ratio</div></div>
+            <div><div class="stat-num">9 Min</div><div class="stat-lbl">Avg Dwell Time</div></div>
+          </div>
+          <p class="case-desc">Complex healthcare diagnostics transformed into accessible participation. Interactive activities demystified technical procedures, elevated by the largest curved LED screen ever brought into Europe.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FULL-BLEED: Red Bull DreamHack — lit stage, players in action -->
+  <div class="fullbleed">
+    <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69cae2fd266346483351685c_Red%20Bull%20-%20Dreamhack-110.jpeg" alt="Red Bull Gaming Unboxed — live gaming arena at DreamHack">
+    <div class="fullbleed-caption">Red Bull Gaming, Unboxed &mdash; DreamHack</div>
+  </div>
+
+
+  <!-- THOUGHT PIECE -->
+  <div class="tp-header">
+    <div class="tp-left">
+      <a href="#" class="tp-back">← Back to all news</a>
+      <div>
+        <p class="tp-tag">Thought Leadership &mdash; as published in LBBOnline</p>
+        <h2 class="tp-title">London Tech Week: Attention Turned Heads, Engagement Changed Minds</h2>
+        <p class="tp-byline">Lyndsey Sherriff, Senior Business Development Manager<br>16 June 2026</p>
+        <a href="https://lbbonline.com/news/London-Tech-Week-Attention-Turned-Heads-Engagement-Changed-Minds" class="tp-cta" target="_blank">Read on LBBOnline &nbsp;→</a>
+      </div>
+    </div>
+    <div class="tp-right">
+      <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbde73a28cb5f904c3a46a_TA307000.jpg" alt="Technology engagement experience">
+    </div>
+  </div>
+
+  <div class="tp-body-wrap">
+    <div class="tp-body">
+      <div class="article-text">
+        <p>Thirty thousand people. Hundreds of world-famous experts across six stages. Global technology leaders, investors, founders and policymakers from 90 plus markets all discussing AI, investment and the future of the UK's £1.2 trillion tech sector.</p>
+        <p>But one of the most memorable sights on the show floor? A queue for a free cap.</p>
+        <p>IFS.ai branded caps drew a line that snaked around its stand. Barclays' Williams Racing Formula 1 car stopped people in their tracks. Notion had a constant queue for coffee. London Tech Week's merch counter gathered a permanent crowd.</p>
+        <p>It was my first visit to London Tech Week, viewed through the lens of brand experience rather than technology. What stood out wasn't the volume of innovation on display. It was how differently brands approached the challenge of making that innovation meaningful to real people.</p>
+        <p>Visitors were hungry to engage but it was clear that attracting attention and creating engagement were two very different things.</p>
+        <p>Like many, I was drawn to Barclays' Williams Racing Formula 1 car. Who wouldn't be? But chatting with Barclays' team soon shifted the focus of conversation from Formula 1 to commercial innovation, start-ups and helping businesses grow every single day.</p>
+        <div class="article-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69b091acc1e7c6087ba5114a_FoS%2025%20-%20Small-1134.jpeg" alt="Brand experience at technology conference">
+        </div>
+        <p>The car had done its job. It had created a terrific opening for a business conversation that simply might never have happened.</p>
+        <p>The same pattern played out across the exhibition floor. And to be honest, the brands that stayed with me weren't necessarily those with the biggest builds or the biggest screens. They were the ones that understood a stand isn't the destination. It's the doorway.</p>
+        <p>AWS, Deloitte, HubSpot and Dell Technologies all got this beautifully — using space segmentation, giving the casually curious something to engage with while protecting time and energy for serious conversations. They treated the floor as a working environment, a real step up in targeted consumer engagement.</p>
+        <p>Brands that seemed most effective in engaging visitors didn't overwhelm with information, they created opportunities for discovery.</p>
+        <p>And this opens up a far richer opportunity for many brands I saw at London Tech Week still treating technology as the hero, rather than the people behind it.</p>
+        <p>One of the most memorable conversations I had wasn't about AI, quantum computing or the future of work. It was with Tesco's product leader, the person responsible for the retailer's self-service checkout experience, including the familiar voice millions of customers hear every day thanking them for shopping at Tesco.</p>
+        <div class="article-img">
+          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69b324bd10117f821074dc52_INHAUS.AE_FHC_02.03.2026%20AI%20UNI%20EVENT-274.jpg" alt="Immersive brand environment">
+        </div>
+        <p>On the surface, it seems unremarkable. Yet that's precisely why it struck me. Here was a piece of technology so embedded in everyday life that most of us barely notice it anymore. But behind it sat a team making thousands of decisions about behaviour, usability, language and human interaction. We talked about everything from customer frustrations and habits to the psychology of reassurance and trust. The technology itself was only part of the story. The real challenge was understanding people.</p>
+        <p>In context of London Tech Week, it may have been a small moment. But it reinforced something important. Behind every platform, product and breakthrough technology are real people solving problems, building businesses and shaping experiences. And that's what people ultimately connect with.</p>
+        <p>London Tech Week showcased some of the most advanced technology in the world. Yet the moments people gravitated towards were often the most tangible: a conversation, a demonstration, a shared experience, a story.</p>
+        <p>For brands heading to London Tech Week 2027, that's the opportunity. Don't just show people what your technology does. Show them why it matters. Because in a hall full of innovation, the brands people remember won't be the ones talking about technology. They'll be the ones helping people experience its impact.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="process-inner">
+      <div class="process-hdr">
+        <p class="section-eyebrow" style="margin-bottom:20px">How we work</p>
+        <h2 class="process-headline">From Insight<br>to Immersion</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-item">
+          <p class="process-step">01</p>
+          <h3 class="process-name">Decode</h3>
+          <p class="process-desc">We dive deep into your innovation's true human impact. What does success actually feel like for your customers? What barriers exist between brilliant technology and emotional connection?</p>
+        </div>
+        <div class="process-item">
+          <p class="process-step">02</p>
+          <h3 class="process-name">Design</h3>
+          <p class="process-desc">We create immersive worlds that make complex technology intuitive. Every touchpoint designed to move people from curious observer to committed believer.</p>
+        </div>
+        <div class="process-item">
+          <p class="process-step">03</p>
+          <h3 class="process-name">Deliver</h3>
+          <p class="process-desc">We execute with obsessive precision and collaborative expertise. Our specialist collaborators handle everything from concept to completion.</p>
+        </div>
+        <div class="process-item">
+          <p class="process-step">04</p>
+          <h3 class="process-name">Develop</h3>
+          <p class="process-desc">We measure transformation alongside metrics. Real behaviour data drives evolution of every environment we create together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+    <p class="cta-eyebrow">Let's talk</p>
+    <h2 class="cta-headline">Let's Make Your<br>Innovation<br>Unforgettable</h2>
+    <p class="cta-sub">Ready to Collaborate, in real life?</p>
+    <a href="mailto:connect@collaborateglobal.com" class="cta-btn">Get in touch &nbsp;→</a>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-row">
+      <div>
+        <p class="footer-lbl">Contact</p>
+        <p class="footer-val"><a href="mailto:connect@collaborateglobal.com">connect@collaborateglobal.com</a></p>
+      </div>
+      <div>
+        <p class="footer-lbl">Social</p>
+        <p class="footer-val"><a href="https://www.instagram.com/collaborateglobal" target="_blank">@collaborateglobal</a></p>
+      </div>
+      <div>
+        <p class="footer-lbl">Website</p>
+        <p class="footer-val"><a href="https://www.collaborateglobal.com" target="_blank">collaborateglobal.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Collaborate Global</span>
+      <span>technology.collaborateglobal.com</span>
+    </div>
+  </footer>
+
+</body>
+</html>
