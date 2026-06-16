@@ -267,7 +267,7 @@
   <!-- NAV -->
   <nav>
     <a href="https://www.collaborateglobal.com" class="nav-logo">
-      <img src="logos/logo_white.png" alt="Collaborate Global">
+      <img src="https://cdn.prod.website-files.com/69722cb95433732e6732d91f/697881d00b53ceeae63f5df8_Vector.svg" alt="Collaborate Global">
     </a>
     <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span>
@@ -598,5 +598,15 @@
     </div>
   </footer>
 
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      navMenu.setAttribute('aria-hidden', !isOpen);
+    });
+  </script>
 </body>
 </html>
