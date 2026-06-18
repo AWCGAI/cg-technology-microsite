@@ -326,12 +326,13 @@
       .brand-logo[alt="TAG Heuer"] { height: 58px; }
       .brand-logo[alt="Red Bull"]  { height: 56px; }
 
-      /* Work — single column stack on tablet */
+      /* Work — single column */
       .work { padding: 80px 24px; }
-      .work-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 2px; }
-      .case-card { min-width: 0 !important; width: 100% !important; max-width: 100% !important; overflow: hidden; }
-      .case-body { padding: 28px 20px 32px; overflow: hidden; }
-      .case-desc, .case-title, .case-client { overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
+      .case-grid { grid-template-columns: 1fr; }
+      .case-card { overflow: hidden; }
+      .case-body { padding: 28px 20px 32px; }
+      .case-title { font-size: 18px; }
+      .stat-num { font-size: 24px; }
 
       /* Thought leadership — stack image below text */
       .tp-header { grid-template-columns: 1fr; min-height: auto; }
@@ -370,8 +371,7 @@
 
       /* Work — single column on phone */
       .work { padding: 60px 20px; }
-      .work-grid { grid-template-columns: 1fr !important; }
-      .case-card { min-width: 0 !important; width: auto !important; }
+      .case-grid { grid-template-columns: 1fr; }
 
       .tp-left { padding: 40px 20px; }
       .tp-right { height: 240px; }
