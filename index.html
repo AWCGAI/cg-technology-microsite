@@ -302,6 +302,8 @@
     .brand-logo[alt="Red Bull"]  { height: 72px; }
 
     /* ── RESPONSIVE ── */
+    html, body { overflow-x: hidden; max-width: 100%; }
+
     @media (max-width: 900px) {
       nav { padding: 18px 24px; }
 
@@ -324,30 +326,12 @@
       .brand-logo[alt="TAG Heuer"] { height: 58px; }
       .brand-logo[alt="Red Bull"]  { height: 56px; }
 
-      /* Work — swipeable horizontal carousel */
-      .work { padding: 80px 0; overflow: visible; }
-      .work-header { padding: 0 24px; }
-      .work-grid {
-        display: flex !important;
-        flex-direction: row !important;
-        overflow-x: scroll;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        gap: 12px;
-        padding: 0 24px 24px;
-        scrollbar-width: none;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      .work-grid::-webkit-scrollbar { display: none; }
-      .case-card {
-        min-width: 78vw !important;
-        width: 78vw !important;
-        max-width: none !important;
-        scroll-snap-align: start;
-        flex-shrink: 0 !important;
-        flex-grow: 0 !important;
-      }
+      /* Work — single column stack on tablet */
+      .work { padding: 80px 24px; }
+      .work-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 2px; }
+      .case-card { min-width: 0 !important; width: 100% !important; max-width: 100% !important; overflow: hidden; }
+      .case-body { padding: 28px 20px 32px; overflow: hidden; }
+      .case-desc, .case-title, .case-client { overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
 
       /* Thought leadership — stack image below text */
       .tp-header { grid-template-columns: 1fr; min-height: auto; }
@@ -384,11 +368,10 @@
       .brand-logo[alt="TAG Heuer"] { height: 48px; }
       .brand-logo[alt="Red Bull"]  { height: 46px; }
 
-      /* Work carousel — slightly wider cards on small phones */
-      .work { padding: 60px 0; }
-      .work-header { padding: 0 20px; }
-      .work-grid { padding: 0 20px 20px; }
-      .case-card { min-width: 88vw !important; width: 88vw !important; }
+      /* Work — single column on phone */
+      .work { padding: 60px 20px; }
+      .work-grid { grid-template-columns: 1fr !important; }
+      .case-card { min-width: 0 !important; width: auto !important; }
 
       .tp-left { padding: 40px 20px; }
       .tp-right { height: 240px; }
