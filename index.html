@@ -56,14 +56,15 @@
     }
     .nav-menu-close span:nth-child(1) { transform: translateY(1px) rotate(45deg); }
     .nav-menu-close span:nth-child(2) { transform: translateY(-1px) rotate(-45deg); }
+    .nav-row { display: block; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .nav-menu a {
-      display: block;
+      display: inline;
       font-size: clamp(36px, 5vw, 72px); font-weight: 400;
       text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1;
       color: var(--white); text-decoration: none;
-      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
       transition: opacity 0.2s;
     }
+    .nav-menu a:hover { opacity: 0.5; }
     .nav-menu a:hover { opacity: 0.5; }
     .nav-menu-footer {
       margin-top: 48px;
@@ -410,12 +411,12 @@
     <button class="nav-menu-close" id="nav-menu-close" aria-label="Close menu">
       <span></span><span></span>
     </button>
-    <a href="https://www.collaborateglobal.com">Home</a>
-    <a href="https://www.collaborateglobal.com/work">Work</a>
-    <a href="https://www.collaborateglobal.com/services">Services</a>
-    <a href="https://www.collaborateglobal.com/about">About</a>
-    <a href="https://www.collaborateglobal.com/news">News</a>
-    <a href="https://www.collaborateglobal.com/contact">Contact</a>
+    <div class="nav-row"><a href="https://www.collaborateglobal.com">Home</a></div>
+    <div class="nav-row"><a href="https://www.collaborateglobal.com/work">Work</a></div>
+    <div class="nav-row"><a href="https://www.collaborateglobal.com/services">Services</a></div>
+    <div class="nav-row"><a href="https://www.collaborateglobal.com/about">About</a></div>
+    <div class="nav-row"><a href="https://www.collaborateglobal.com/news">News</a></div>
+    <div class="nav-row"><a href="https://www.collaborateglobal.com/contact">Contact</a></div>
     <a href="https://www.collaborateglobal.com" style="font-size:16px;letter-spacing:0.12em;opacity:0.5;margin-top:24px;">collaborateglobal.com →</a>
     <p class="nav-menu-footer">Technology — Collaborate Global</p>
   </div>
