@@ -302,8 +302,6 @@
     .brand-logo[alt="Red Bull"]  { height: 72px; }
 
     /* ── RESPONSIVE ── */
-    html, body { overflow-x: hidden; }
-
     @media (max-width: 900px) {
       nav { padding: 18px 24px; }
 
@@ -312,7 +310,8 @@
       .philosophy { padding: 80px 24px; }
       .philosophy-inner { grid-template-columns: 1fr; gap: 40px; }
 
-      .fullbleed { overflow: hidden; }
+      /* Hide full-bleed image sections on mobile — they don't work well at small widths */
+      .fullbleed { display: none; }
       .fullbleed-caption { left: 24px; bottom: 24px; }
 
       .services { padding: 80px 24px; }
@@ -326,24 +325,28 @@
       .brand-logo[alt="Red Bull"]  { height: 56px; }
 
       /* Work — swipeable horizontal carousel */
-      .work { padding: 80px 0; }
+      .work { padding: 80px 0; overflow: visible; }
       .work-header { padding: 0 24px; }
       .work-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: scroll;
         -webkit-overflow-scrolling: touch;
-        gap: 0;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
         padding: 0 24px 24px;
         scrollbar-width: none;
+        width: 100%;
+        box-sizing: border-box;
       }
       .work-grid::-webkit-scrollbar { display: none; }
       .case-card {
-        min-width: 78vw;
-        max-width: 78vw;
+        min-width: 78vw !important;
+        width: 78vw !important;
+        max-width: none !important;
         scroll-snap-align: start;
-        flex-shrink: 0;
-        margin-right: 12px;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
       }
 
       /* Thought leadership — stack image below text */
@@ -385,7 +388,7 @@
       .work { padding: 60px 0; }
       .work-header { padding: 0 20px; }
       .work-grid { padding: 0 20px 20px; }
-      .case-card { min-width: 88vw; max-width: 88vw; }
+      .case-card { min-width: 88vw !important; width: 88vw !important; }
 
       .tp-left { padding: 40px 20px; }
       .tp-right { height: 240px; }
