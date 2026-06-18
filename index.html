@@ -63,7 +63,7 @@
       position: relative; min-height: 100vh;
       display: flex; align-items: flex-end;
       padding: 140px 80px 100px;
-      background: url('assets/hero-bg.jpg') center / cover no-repeat;
+      background: url('assets/hero-bg.jpg') center top / cover no-repeat;
     }
     .hero-content { position: relative; z-index: 1; max-width: 960px; }
     .hero-eyebrow {
@@ -155,8 +155,11 @@
     .case-link:hover { border-bottom-color: var(--black); }
 
     /* ── THOUGHT PIECE ── */
+    .tp-link { display: block; text-decoration: none; cursor: pointer; }
+    .tp-link:hover .tp-header { opacity: 0.95; }
     .tp-header {
       display: grid; grid-template-columns: 5fr 7fr; min-height: 640px;
+      transition: opacity 0.2s;
     }
     .tp-left {
       padding: 72px 60px;
@@ -514,26 +517,28 @@
   </section>
 
 
-  <!-- FULL-BLEED: Red Bull DreamHack — lit stage, players in action -->
-  <div class="fullbleed">
-    <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69cae2fd266346483351685c_Red%20Bull%20-%20Dreamhack-110.jpeg" alt="Red Bull Gaming Unboxed — live gaming arena at DreamHack">
-    <div class="fullbleed-caption">Red Bull Gaming, Unboxed &mdash; DreamHack</div>
-  </div>
-
-
   <!-- THOUGHT PIECE -->
+  <a href="https://lbbonline.com/news/London-Tech-Week-Attention-Turned-Heads-Engagement-Changed-Minds?shem=rimspwouoe" target="_blank" class="tp-link">
   <div class="tp-header">
     <div class="tp-left">
       <div class="tp-content">
         <p class="tp-tag">Thought Leadership &mdash; as published in LBBOnline</p>
         <h2 class="tp-title">London Tech Week: Attention Turned Heads, Engagement Changed Minds</h2>
         <p class="tp-byline">Lyndsey Sherriff, senior business development manager at Collaborate Global, shares her observations from London Tech Week</p>
-        <a href="https://lbbonline.com/news/London-Tech-Week-Attention-Turned-Heads-Engagement-Changed-Minds?shem=rimspwouoe" class="tp-cta" target="_blank">Read on LBBOnline &nbsp;→</a>
+        <span class="tp-cta">Read on LBBOnline &nbsp;→</span>
       </div>
     </div>
     <div class="tp-right">
       <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbde73a28cb5f904c3a46a_TA307000.jpg" alt="Technology engagement experience">
     </div>
+  </div>
+  </a>
+
+
+  <!-- FULL-BLEED: Red Bull DreamHack — lit stage, players in action -->
+  <div class="fullbleed">
+    <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69cae2fd266346483351685c_Red%20Bull%20-%20Dreamhack-110.jpeg" alt="Red Bull Gaming Unboxed — live gaming arena at DreamHack">
+    <div class="fullbleed-caption">Red Bull Gaming, Unboxed &mdash; DreamHack</div>
   </div>
 
 
