@@ -146,6 +146,13 @@
     .stat-num { font-size: 30px; font-weight: 400; line-height: 1; margin-bottom: 4px; }
     .stat-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.45; }
     .case-desc { font-size: 13.5px; line-height: 1.65; color: #555; margin-top: auto; }
+    .case-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--black); text-decoration: none; margin-top: 20px;
+      padding-bottom: 2px; border-bottom: 1px solid rgba(0,0,0,0.25);
+    }
+    .case-link:hover { border-bottom-color: var(--black); }
 
     /* ── THOUGHT PIECE ── */
     .tp-header {
@@ -257,8 +264,11 @@
     .brands-list {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 48px 64px;
     }
-    .brand-name {
-      font-size: 15px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.35;
+    .brand-logo {
+      height: 28px; width: auto; max-width: 120px;
+      filter: grayscale(1) contrast(10) brightness(0.8);
+      mix-blend-mode: multiply;
+      opacity: 0.35;
     }
   </style>
 </head>
@@ -353,16 +363,16 @@
     <div class="brands-inner">
       <p class="brands-lbl">Trusted by brands building the future</p>
       <div class="brands-list">
-        <span class="brand-name">KDDI</span>
-        <span class="brand-name">Hyundai N</span>
-        <span class="brand-name">eBay</span>
-        <span class="brand-name">Huawei</span>
-        <span class="brand-name">MBZUAI</span>
-        <span class="brand-name">Randox</span>
-        <span class="brand-name">Aston Martin</span>
-        <span class="brand-name">Nike</span>
-        <span class="brand-name">Octopus Energy</span>
-        <span class="brand-name">Louis Vuitton</span>
+        <img class="brand-logo" src="assets/logo-kddi.png" alt="KDDI">
+        <img class="brand-logo" src="assets/logo-hyundai-n.png" alt="Hyundai N">
+        <img class="brand-logo" src="assets/logo-ebay.png" alt="eBay">
+        <img class="brand-logo" src="assets/logo-huawei.png" alt="Huawei">
+        <img class="brand-logo" src="assets/logo-mbzuai.png" alt="MBZUAI">
+        <img class="brand-logo" src="assets/logo-randox.png" alt="Randox">
+        <img class="brand-logo" src="assets/logo-aston-martin.webp" alt="Aston Martin">
+        <img class="brand-logo" src="assets/logo-nike.svg" alt="Nike">
+        <img class="brand-logo" src="assets/logo-octopus.png" alt="Octopus Energy">
+        <img class="brand-logo" src="assets/logo-louis-vuitton.png" alt="Louis Vuitton">
       </div>
     </div>
   </section>
@@ -389,23 +399,24 @@
             <div><div class="stat-num">48%</div><div class="stat-lbl">Engagement Rate</div></div>
             <div><div class="stat-num">13+</div><div class="stat-lbl">Min Avg Dwell</div></div>
           </div>
-          <p class="case-desc">Three consecutive years at MWC, evolving KDDI's story from human moments, to intelligent systems, to a fully connected Tokyo. By making the complex feel intuitive, visitors left understanding not just what KDDI does — but why it matters.</p>
+          <p class="case-desc">Three consecutive years at MWC, evolving KDDI's story from human moments, to intelligent systems, to a fully connected city. By making the complex feel intuitive, visitors left understanding not just what KDDI does, but why it matters.</p>
+          <a href="https://www.collaborateglobal.com/works/kddi-world" class="case-link" target="_blank">See the full project &nbsp;→</a>
         </div>
       </div>
 
-      <!-- KDDI 2 — interior -->
+      <!-- Huawei -->
       <div class="case-card">
         <div class="case-img">
-          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbe185233b8adee5bc6f91_TA307060.jpg" alt="KDDI — Life Transformation globe installation at MWC">
+          <img src="assets/huawei-mwc.jpg" alt="Huawei at Mobile World Congress — immersive product experience">
         </div>
         <div class="case-body">
-          <p class="case-client">KDDI</p>
-          <h3 class="case-title">Life Transformation:<br>Globe Installation</h3>
+          <p class="case-client">Huawei</p>
+          <h3 class="case-title">Mobile World<br>Congress</h3>
           <div class="case-stats">
-            <div><div class="stat-num">3</div><div class="stat-lbl">Consecutive Years</div></div>
-            <div><div class="stat-num">Tokyo</div><div class="stat-lbl">Connected City Concept</div></div>
+            <div><div class="stat-num">MWC</div><div class="stat-lbl">Barcelona</div></div>
+            <div><div class="stat-num">360°</div><div class="stat-lbl">Product Immersion</div></div>
           </div>
-          <p class="case-desc">In 2026, the experience evolved into a connected city inspired by Tokyo. Visitors moved through streets, retail spaces and everyday interactions where KDDI's technology wasn't demonstrated — it was lived.</p>
+          <p class="case-desc">From immersive photography experiences to music-led interactions and high-spec product demonstrations, visitors explored how Huawei's latest innovations could unlock new creative possibilities, making innovation tangible.</p>
         </div>
       </div>
 
@@ -423,7 +434,8 @@
             <div><div class="stat-num">15 Min</div><div class="stat-lbl">Avg Dwell Time</div></div>
             <div><div class="stat-num">£15k+</div><div class="stat-lbl">Merch Sales</div></div>
           </div>
-          <p class="case-desc">A layered environment blending immersive digital storytelling, interactive racing simulators and exclusive Goodwood grandstand access. Rather than launching a car, Hyundai created an environment people could step into.</p>
+          <p class="case-desc">A layered environment where audiences could experience the technology, engineering and emotion behind the vehicle through multiple touchpoints, blending immersion, storytelling and participation. Rather than simply launching a car, Hyundai created an environment people could actively step into.</p>
+          <a href="https://www.collaborateglobal.com/works/hyundai-ioniq-6-n-global-launch" class="case-link" target="_blank">See the full project &nbsp;→</a>
         </div>
       </div>
 
@@ -439,7 +451,8 @@
             <div><div class="stat-num">45,000</div><div class="stat-lbl">Engaged Fans</div></div>
             <div><div class="stat-num">15 Min</div><div class="stat-lbl">Avg Dwell Time</div></div>
           </div>
-          <p class="case-desc">A multi-level experiential destination at the British Grand Prix and Goodwood Festival of Speed. High-energy physical challenges, multiplayer experiences, digital-first content zones and creator talent made the digital platform physical.</p>
+          <p class="case-desc">A multi-level experiential destination at the British Grand Prix and Goodwood Festival of Speed. High-energy physical challenges, multiplayer experiences, digital-first content zones and creator-led programming, all designed to reflect the layered nature of the eBay platform.</p>
+          <a href="https://www.collaborateglobal.com/works/ebay-garage-3" class="case-link" target="_blank">See the full project &nbsp;→</a>
         </div>
       </div>
 
@@ -456,7 +469,8 @@
             <div><div class="stat-num">25%</div><div class="stat-lbl">Visitor Conversion</div></div>
             <div><div class="stat-num">34%</div><div class="stat-lbl">Engagement Rate</div></div>
           </div>
-          <p class="case-desc">Four days, seven venues. A university campus transformed into a living festival of AI innovation — innovation stages, storytelling totems and community spaces. Making technology feel human in an increasingly digital world.</p>
+          <p class="case-desc">Across four days, seven venues and a landmark cultural space, the MBZUAI campus became a connected festival of ideas. Innovation stages, storytelling totems and community spaces revealed different sides of the university's impact.</p>
+          <a href="https://www.collaborateglobal.com/works/mbzuai-five-years-forward" class="case-link" target="_blank">See the full project &nbsp;→</a>
         </div>
       </div>
 
@@ -473,7 +487,8 @@
             <div><div class="stat-num">30%</div><div class="stat-lbl">Conversion Ratio</div></div>
             <div><div class="stat-num">9 Min</div><div class="stat-lbl">Avg Dwell Time</div></div>
           </div>
-          <p class="case-desc">Complex healthcare diagnostics transformed into accessible participation. Interactive activities demystified technical procedures, elevated by the largest curved LED screen ever brought into Europe.</p>
+          <p class="case-desc">Visitors explored healthcare innovation through interactive activities that demystified complex science, elevated by the largest curved LED screen ever brought into Europe.</p>
+          <a href="https://www.collaborateglobal.com/works/randox-future-lab" class="case-link" target="_blank">See the full project &nbsp;→</a>
         </div>
       </div>
 
@@ -491,12 +506,11 @@
   <!-- THOUGHT PIECE -->
   <div class="tp-header">
     <div class="tp-left">
-      <a href="#" class="tp-back">← Back to all news</a>
       <div>
         <p class="tp-tag">Thought Leadership &mdash; as published in LBBOnline</p>
         <h2 class="tp-title">London Tech Week: Attention Turned Heads, Engagement Changed Minds</h2>
         <p class="tp-byline">Lyndsey Sherriff, Senior Business Development Manager<br>16 June 2026</p>
-        <a href="https://lbbonline.com/news/London-Tech-Week-Attention-Turned-Heads-Engagement-Changed-Minds" class="tp-cta" target="_blank">Read on LBBOnline &nbsp;→</a>
+        <a href="https://lnkd.in/e6mEgsEY" class="tp-cta" target="_blank">Read on LBBOnline &nbsp;→</a>
       </div>
     </div>
     <div class="tp-right">
@@ -504,34 +518,6 @@
     </div>
   </div>
 
-  <div class="tp-body-wrap">
-    <div class="tp-body">
-      <div class="article-text">
-        <p>Thirty thousand people. Hundreds of world-famous experts across six stages. Global technology leaders, investors, founders and policymakers from 90 plus markets all discussing AI, investment and the future of the UK's £1.2 trillion tech sector.</p>
-        <p>But one of the most memorable sights on the show floor? A queue for a free cap.</p>
-        <p>IFS.ai branded caps drew a line that snaked around its stand. Barclays' Williams Racing Formula 1 car stopped people in their tracks. Notion had a constant queue for coffee. London Tech Week's merch counter gathered a permanent crowd.</p>
-        <p>It was my first visit to London Tech Week, viewed through the lens of brand experience rather than technology. What stood out wasn't the volume of innovation on display. It was how differently brands approached the challenge of making that innovation meaningful to real people.</p>
-        <p>Visitors were hungry to engage but it was clear that attracting attention and creating engagement were two very different things.</p>
-        <p>Like many, I was drawn to Barclays' Williams Racing Formula 1 car. Who wouldn't be? But chatting with Barclays' team soon shifted the focus of conversation from Formula 1 to commercial innovation, start-ups and helping businesses grow every single day.</p>
-        <div class="article-img">
-          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69b091acc1e7c6087ba5114a_FoS%2025%20-%20Small-1134.jpeg" alt="Brand experience at technology conference">
-        </div>
-        <p>The car had done its job. It had created a terrific opening for a business conversation that simply might never have happened.</p>
-        <p>The same pattern played out across the exhibition floor. And to be honest, the brands that stayed with me weren't necessarily those with the biggest builds or the biggest screens. They were the ones that understood a stand isn't the destination. It's the doorway.</p>
-        <p>AWS, Deloitte, HubSpot and Dell Technologies all got this beautifully — using space segmentation, giving the casually curious something to engage with while protecting time and energy for serious conversations. They treated the floor as a working environment, a real step up in targeted consumer engagement.</p>
-        <p>Brands that seemed most effective in engaging visitors didn't overwhelm with information, they created opportunities for discovery.</p>
-        <p>And this opens up a far richer opportunity for many brands I saw at London Tech Week still treating technology as the hero, rather than the people behind it.</p>
-        <p>One of the most memorable conversations I had wasn't about AI, quantum computing or the future of work. It was with Tesco's product leader, the person responsible for the retailer's self-service checkout experience, including the familiar voice millions of customers hear every day thanking them for shopping at Tesco.</p>
-        <div class="article-img">
-          <img src="https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69b324bd10117f821074dc52_INHAUS.AE_FHC_02.03.2026%20AI%20UNI%20EVENT-274.jpg" alt="Immersive brand environment">
-        </div>
-        <p>On the surface, it seems unremarkable. Yet that's precisely why it struck me. Here was a piece of technology so embedded in everyday life that most of us barely notice it anymore. But behind it sat a team making thousands of decisions about behaviour, usability, language and human interaction. We talked about everything from customer frustrations and habits to the psychology of reassurance and trust. The technology itself was only part of the story. The real challenge was understanding people.</p>
-        <p>In context of London Tech Week, it may have been a small moment. But it reinforced something important. Behind every platform, product and breakthrough technology are real people solving problems, building businesses and shaping experiences. And that's what people ultimately connect with.</p>
-        <p>London Tech Week showcased some of the most advanced technology in the world. Yet the moments people gravitated towards were often the most tangible: a conversation, a demonstration, a shared experience, a story.</p>
-        <p>For brands heading to London Tech Week 2027, that's the opportunity. Don't just show people what your technology does. Show them why it matters. Because in a hall full of innovation, the brands people remember won't be the ones talking about technology. They'll be the ones helping people experience its impact.</p>
-      </div>
-    </div>
-  </div>
 
 
   <!-- PROCESS -->
@@ -572,7 +558,7 @@
     <p class="cta-eyebrow">Let's talk</p>
     <h2 class="cta-headline">Let's Make Your<br>Innovation<br>Unforgettable</h2>
     <p class="cta-sub">Ready to Collaborate, in real life?</p>
-    <a href="mailto:connect@collaborateglobal.com" class="cta-btn">Get in touch &nbsp;→</a>
+    <a href="https://www.collaborateglobal.com/contact" class="cta-btn">Get in touch &nbsp;→</a>
   </section>
 
 
