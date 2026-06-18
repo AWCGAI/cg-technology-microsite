@@ -63,7 +63,7 @@
       position: relative; min-height: 100vh;
       display: flex; align-items: flex-end;
       padding: 140px 80px 100px;
-      background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('https://cdn.prod.website-files.com/69722cb95433732e6732d91f/697c7850efd29ca1dded0221_Grad_Crop.jpg') center / cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://cdn.prod.website-files.com/69722cb95433732e6732d91f/697c7850efd29ca1dded0221_Grad_Crop.jpg') center / cover no-repeat;
     }
     .hero-content { position: relative; z-index: 1; max-width: 960px; }
     .hero-eyebrow {
@@ -160,7 +160,7 @@
     }
     .tp-left {
       padding: 72px 60px;
-      background: url('https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbde3b9fa0030720b7d7ce_TA307206.jpg') center / cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbde3b9fa0030720b7d7ce_TA307206.jpg') center / cover no-repeat;
       display: flex; flex-direction: column; justify-content: space-between;
     }
     .tp-back { font-size: 13px; color: rgba(255,255,255,0.75); text-decoration: none; }
@@ -233,11 +233,14 @@
       display: block;
     }
     .fullbleed-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 60px 80px 52px;
-      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
-      color: rgba(255,255,255,0.7);
+      position: absolute; bottom: 40px; left: 80px;
+      padding: 8px 18px;
+      background: rgba(0,0,0,0.48);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: rgba(255,255,255,0.88);
       font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      display: inline-block;
     }
 
     /* ── FOOTER ── */
