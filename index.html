@@ -289,15 +289,25 @@
       display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 48px 64px;
     }
     .brand-logo-wrap {
-      width: 196px; height: 70px;
       display: flex; align-items: center; justify-content: center;
     }
     .brand-logo {
-      width: 196px; height: 70px;
-      object-fit: fill;
+      display: block;
+      width: auto;
       mix-blend-mode: multiply;
       opacity: 0.85;
     }
+    /* Per-logo height — compact/square logos get more height to feel equally present */
+    .brand-logo[alt="Microsoft"]      { height: 38px; }
+    .brand-logo[alt="BAE Systems"]    { height: 64px; }
+    .brand-logo[alt="Huawei"]         { height: 62px; }
+    .brand-logo[alt="TAG Heuer"]      { height: 64px; }
+    .brand-logo[alt="Aston Martin"]   { height: 54px; }
+    .brand-logo[alt="Nike"]           { height: 46px; }
+    .brand-logo[alt="MBZUAI"]         { height: 46px; }
+    .brand-logo[alt="DHL"]            { height: 40px; }
+    .brand-logo[alt="Red Bull"]       { height: 64px; }
+    .brand-logo[alt="Qatar Airways"]  { height: 52px; }
   </style>
 </head>
 <body>
