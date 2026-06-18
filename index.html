@@ -160,11 +160,17 @@
     }
     .tp-left {
       padding: 72px 60px;
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbde3b9fa0030720b7d7ce_TA307206.jpg') center / cover no-repeat;
+      background: url('https://cdn.prod.website-files.com/6978c48ce60ee322ec650652/69bbde3b9fa0030720b7d7ce_TA307206.jpg') center / cover no-repeat;
       display: flex; flex-direction: column; justify-content: space-between;
     }
+    .tp-content {
+      padding: 20px 24px;
+      background: rgba(0,0,0,0.48);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: inline-block;
+    }
     .tp-back { font-size: 13px; color: rgba(255,255,255,0.75); text-decoration: none; }
-    .tp-content {}
     .tp-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 14px; }
     .tp-title {
       font-size: clamp(26px, 3vw, 42px); font-weight: 400; line-height: 1.1;
@@ -516,7 +522,7 @@
   <!-- THOUGHT PIECE -->
   <div class="tp-header">
     <div class="tp-left">
-      <div>
+      <div class="tp-content">
         <p class="tp-tag">Thought Leadership &mdash; as published in LBBOnline</p>
         <h2 class="tp-title">London Tech Week: Attention Turned Heads, Engagement Changed Minds</h2>
         <p class="tp-byline">Lyndsey Sherriff, Senior Business Development Manager<br>16 June 2026</p>
