@@ -44,6 +44,18 @@
       transition: opacity 0.3s ease;
     }
     .nav-menu.open { opacity: 1; pointer-events: all; }
+    .nav-menu-close {
+      position: absolute; top: 28px; right: 48px;
+      background: none; border: none; cursor: pointer;
+      width: 32px; height: 32px; padding: 0;
+      display: flex; flex-direction: column; justify-content: center; gap: 0;
+    }
+    .nav-menu-close span {
+      display: block; width: 26px; height: 2px; background: var(--white);
+      transition: transform 0.25s;
+    }
+    .nav-menu-close span:nth-child(1) { transform: translateY(1px) rotate(45deg); }
+    .nav-menu-close span:nth-child(2) { transform: translateY(-1px) rotate(-45deg); }
     .nav-menu a {
       display: block;
       font-size: clamp(36px, 5vw, 72px); font-weight: 400;
@@ -304,6 +316,9 @@
 
   <!-- MOBILE MENU -->
   <div class="nav-menu" id="nav-menu" aria-hidden="true">
+    <button class="nav-menu-close" id="nav-menu-close" aria-label="Close menu">
+      <span></span><span></span>
+    </button>
     <a href="https://www.collaborateglobal.com/work">Work</a>
     <a href="https://www.collaborateglobal.com/services">Services</a>
     <a href="https://www.collaborateglobal.com/about">About</a>
@@ -605,12 +620,25 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+    const navClose = document.getElementById('nav-menu-close');
+
+    function openMenu() {
+      hamburger.classList.add('open');
+      navMenu.classList.add('open');
+      hamburger.setAttribute('aria-expanded', true);
+      navMenu.setAttribute('aria-hidden', false);
+    }
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      navMenu.setAttribute('aria-hidden', true);
+    }
+
     hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('open');
-      navMenu.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen);
-      navMenu.setAttribute('aria-hidden', !isOpen);
+      navMenu.classList.contains('open') ? closeMenu() : openMenu();
     });
+    navClose.addEventListener('click', closeMenu);
   </script>
 </body>
 </html>
